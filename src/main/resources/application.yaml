@@ -1,0 +1,14 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /api/v1
+spring:
+  application:
+    name: helpmeiud
+  datasource:
+    url: jdbc:mysql://localhost:3306/helpme_iud
+    username: codentide
+    password: acertijo21
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
