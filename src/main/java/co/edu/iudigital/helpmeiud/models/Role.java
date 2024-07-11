@@ -10,18 +10,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity @Table(name = "roles")
+@Entity
+@Table(name = "roles")
 @Getter @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role implements Serializable {
 
     static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     @Column(unique = true, length = 100)
     String name;
-
     @Column
     String description;
 

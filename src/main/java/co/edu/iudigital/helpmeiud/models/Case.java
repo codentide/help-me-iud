@@ -26,7 +26,7 @@ public class Case {
     @Column
     Long altitude;
     @Column
-    Boolean visible;
+    Boolean isVisible;
     @Column
     String description;
     @Column(name = "map_url")

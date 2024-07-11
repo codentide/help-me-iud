@@ -17,36 +17,35 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    static final long serialVersionUID = 1L;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @Column(name = "user_name", unique = true, length = 30)
     @Size(min = 5, max = 30)
-    private String username;
+    String username;
 
     @Column(length = 120)
-    private String name;
+    String name;
 
     @Column(name = "last_name", length = 120)
-    private String lastName;
+    String lastName;
 
     @Column(length = 16)
     @Size(min = 8, max = 16)
-    private String password;
+    String password;
 
     @Column
-    private String image;
+    String image;
 
     @Column
-    private Boolean enabled;
+    Boolean enabled;
 
     @Column(name = "birth_date")
-    private LocalDate birthDate;
+    LocalDate birthDate;
 
     @Column(name = "social_web")
-    private Boolean socialWeb;
+    Boolean socialWeb;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "roles_users",
