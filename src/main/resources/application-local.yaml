@@ -5,32 +5,38 @@ server:
 spring:
   application:
     name: helpmeiud
-  # DATABASE CONNECTION
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:mysql://localhost:3306/helpme_iud
+    username: codentide
+    password: acertijo21
   jpa:
     hibernate:
       ddl-auto: update
-  # ENVÍO MAIL
+    show-sql: true
+    defer-datasource-initialization: true
   mail:
     host: smtp.gmail.com
     port: 587
-    username: <CORREO_GMAIL_AQUI>
-    password: <CONTRASEÑA_AQUI>
+    username: <template@sendermail.com>
+    password: <sendermailpassword>
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-  #SECURITY
+  #FILES
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+#SECURITY
 security:
   jwt:
     client-service: HelpmeIUD
-    password-service: <PASSWORD_HERE>
+    password-service: 123456
     scope-read: read
     scope-write: write
     grant-password: password

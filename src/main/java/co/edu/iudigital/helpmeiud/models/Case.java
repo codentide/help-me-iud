@@ -1,6 +1,7 @@
 package co.edu.iudigital.helpmeiud.models;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 public class Case {
 
     static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "date_time")

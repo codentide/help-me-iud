@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICrimeRepository extends JpaRepository<Crime, Long> {
 
+    Crime findByName(String name);
+    Crime findByNameIgnoreCase(String name);
+
 }

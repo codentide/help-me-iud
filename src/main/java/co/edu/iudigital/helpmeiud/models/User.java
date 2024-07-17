@@ -21,18 +21,16 @@ public class User implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "user_name", unique = true, length = 30)
-    @Size(min = 5, max = 30)
+    @Column(name = "user_name", unique = true)
     String username;
 
-    @Column(length = 120)
+    @Column(length = 120, nullable = false)
     String name;
 
     @Column(name = "last_name", length = 120)
     String lastName;
 
-    @Column(length = 16)
-    @Size(min = 8, max = 16)
+    @Column
     String password;
 
     @Column
@@ -47,9 +45,11 @@ public class User implements Serializable {
     @Column(name = "social_web")
     Boolean socialWeb;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "roles_users",
-            joinColumns = {@JoinColumn(name = "users_id")},
-            inverseJoinColumns = {@JoinColumn(name = "roles_id")})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "roles_users",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
     List<Role> roles;
 }

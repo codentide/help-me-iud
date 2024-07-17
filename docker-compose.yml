@@ -1,0 +1,39 @@
+# docker-compose.yml
+
+version: '3.9'
+services:
+  helpme-iud:
+    build:
+      context: .
+    ports:
+      - "8084:8084"
+    environment:
+      DATABASE_URL: jdbc:mysql://database:3306/helpme_iud?createDatabaseIfNoExists=true
+      DATABASE_USERNAME: codentide
+      DATABASE_PASSWORD: acertijo21
+    networks:
+      - iudigital
+    depends_on:
+      - database
+    restart: always
+
+  database:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: fabiola21
+      MYSQL_DATABASE: helpme_iud
+      MYSQL_USER: codentide
+      MYSQL_PASSWORD: acertijo21
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - iudigital
+
+networks:
+  iudigital:
+
+volumes:
+  db_data:
