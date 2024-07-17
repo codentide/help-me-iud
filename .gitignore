@@ -35,4 +35,5 @@ build/
 ##
 /src/main/resources/jwt.pem
 /src/main/resources/key.txt
-/uploads/**
+/uploads/*
+!/uploads/.gitkeep
